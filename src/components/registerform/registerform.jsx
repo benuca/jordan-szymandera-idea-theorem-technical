@@ -29,7 +29,6 @@ const formLabelStyles = {
 const formControlStyles = {
   marginBottom: "16px",
   "& .MuiOutlinedInput-root": {
-    // maxHeight: "50px",
     "& fieldset": {
       borderColor: "#A5B6CD",
     },
@@ -131,18 +130,12 @@ const RegisterForm = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleCloseSuccess = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
+    if (reason === "clickaway") return;
     setOpenSuccess(false);
   };
 
   const handleCloseError = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
+    if (reason === "clickaway") return;
     setOpenError(false);
   };
 
@@ -161,11 +154,7 @@ const RegisterForm = () => {
   };
 
   const handleSubmit = (errors) => {
-    console.log(errors);
-    if (Object.keys(errors).length > 0) {
-      console.log("errors");
-      setOpenError(true);
-    }
+    if (Object.keys(errors).length > 0) setOpenError(true);
   };
 
   return (
@@ -177,7 +166,7 @@ const RegisterForm = () => {
         submitForm(values);
       }}
     >
-      {(form, errors) => (
+      {(form) => (
         <Form noValidate>
           <Box sx={{ marginTop: 4, maxWidth: "502px", margin: "auto" }}>
             <Snackbar
